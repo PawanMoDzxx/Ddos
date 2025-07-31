@@ -1,0 +1,39 @@
+name: Python Application CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Update System Packages
+        run: sudo apt update -y
+
+      - name: Install System Dependencies
+        run: |
+          sudo apt install -y python3 python3-pip python3-dev build-essential
+
+      - name: Set Up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.13"
+
+      - name: Install Python Dependencies
+        run: |
+          pip install aiohttp telebot pymongo pytz psutil
+
+      - name: Set Execute Permissions
+        run: chmod +x *
+
+      - name: Run Application
+        run: python3 Danger.py
